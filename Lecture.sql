@@ -17,5 +17,7 @@ when SalesAmount <= 50 then "0-50"
 when SalesAmount > 50 AND SalesAmount <= 100 then "51-100"
 -- default case, good to have so that we dont potentially have "nulls"
 when SalesAmount > 100 then "101+"
+-- "range" here represents the result of the case statement, this is true of any alias placed after the 'as'
+-- "range" is simply an alias, 'end as' represents the results of the case statement
 end as "range"
 from sales1
