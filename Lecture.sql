@@ -21,3 +21,26 @@ when SalesAmount > 100 then "101+"
 -- "range" is simply an alias, 'end as' represents the results of the case statement
 end as "range"
 from sales1
+
+-- Create function
+
+DELIMITER $$
+
+CREATE FUNCTION IsAdult  (age INTEGER)
+returns varchar (3)
+-- deterministic means that if  you give it the same input, it should always return the same output 
+-- if it relies on other variables, won't be deterministic as it can change subject to initial conditions
+-- deterministic helps with optimization of the programme
+DETERMINISTIC
+
+Begin
+if age >= 18 
+then return ("yes");
+else
+return ("no");
+end if; 
+
+END $$
+
+DELIMITER ; 
+
