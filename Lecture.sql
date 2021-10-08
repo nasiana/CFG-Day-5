@@ -44,3 +44,25 @@ END $$
 
 DELIMITER ; 
 
+-- calling the function
+
+SELECT IsAdult(15);
+SELECT IsAdult(25);
+
+-- creating a variable
+SET @TransferAmount = 50;
+
+-- transactions
+
+-- STARTING THE transaction, induces a temporary state of data
+START TRANSACTION;
+-- when using transaction, by using the command rollback we can 'undo' the transaction and go back to the original state of data
+ROLLBACK;
+-- commit comand makes the state of data permanent, so the changes have been committed permanently to the database
+COMMIT;
+
+-- INDEX
+-- "country_code_idx" is simply a name of the index, can be anything
+CREATE INDEX country_code_idx
+-- ON specifies the table it needs to be run on which in this case is 'world.city_no_index' then the column specified in brackets
+on world.city_no_index (CountryCode);
